@@ -186,12 +186,12 @@ jQuery.fn.autoComplete = function(params) {
                            if (typeof(JSONdata['results'][record]['customCallback']) != 'undefined') {
                               jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '">' + JSONdata['results'][record]['info'] + '</div>')
                                  .appendTo(position).click(JSONdata['results'][record]['customCallback']).hover(function() {
-                                    jQUery(this).addClas('__AC_ie8HoverFix');
+                                    jQuery(this).addClas('__AC_ie8HoverFix');
                                     hoverEntry = true;
                                     jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
                                     isFreetext = false;
                                  }, function() {
-                                    jQUery(this).removeClas('__AC_ie8HoverFix');
+                                    jQuery(this).removeClas('__AC_ie8HoverFix');
                                     hoverEntry = false;
                                  }
                               );
@@ -208,11 +208,11 @@ jQuery.fn.autoComplete = function(params) {
                                        jQuery(options['putIdInto']).val(JSONdata['results'][record]['id']);
                                     }
                                  }).hover(function() {
-                                    jQUery(this).addClas('__AC_ie8HoverFix');
+                                    jQuery(this).addClas('__AC_ie8HoverFix');
                                     jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
                                     hoverEntry = true;
                                  }, function() {
-                                    jQUery(this).removeClas('__AC_ie8HoverFix');
+                                    jQuery(this).removeClas('__AC_ie8HoverFix');
                                     hoverEntry = false;
                                  }
                               );
