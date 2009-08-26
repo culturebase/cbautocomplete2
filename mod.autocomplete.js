@@ -171,7 +171,7 @@ jQuery.fn.autoComplete = function(params) {
                options['requestParam'] + '=' + typed,
                function(data) {
                   if (hasFocus || !options['closeWhenBlur']) {
-                     var JSONdata = eval("("+data+")");
+                     var JSONdata = JSON.parse(data);
                      box.find('.__AC_layer').html('<div class="__AC_data"></div>');
                      box.find('.__AC_close').click(function() {
                         hoverEntry = false;
