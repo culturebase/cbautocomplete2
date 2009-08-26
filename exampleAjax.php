@@ -82,6 +82,5 @@ $footer = 'jQuery("<div>'.ml('autocomplete_city_missing').'</div>").click(functi
    "text-align": "right",
    "cursor": "pointer"
 })';
-#echo '{ data: [{ results: ['.join(',', $return).'],  footer: '.$footer.' }] }';
 echo '{ results: ['.join(',', $return).'],  footer: '.$footer.' }';
 ?>
