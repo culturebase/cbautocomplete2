@@ -27,7 +27,7 @@ jQuery.fn.autoComplete = function(params) {
       /**
        * Which url will be called to get out completion data?
        */
-      'requestUrl':    '/module/lib/framework/selectBoxDataCity.php',
+      'requestUrl':    '/module/jscript/lib/jquery_plugins/autocomplete2/exampleAjax.php',
       /**
        * Should we close the box and reset the <input/> when its losing focus?
        */
