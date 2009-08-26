@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+   <head>
+      <title></title>
+      <script type="text/javascript" src="lib.jquery.js"></script>
+      <script type="text/javascript" src="mod.autocomplete.js"></script>
+      <link type="text/css" rel="stylesheet" href="mod.autocomplete.css" />
+      <style type="text/css">
+         input {
+            padding: 0px;
+            border: 1px solid #C7C6B9;
+            width: 200px;
+            height: 18px;
+            font-family: arial;
+            font-size: 12px;
+         }
+      </style>
+      <script type="text/javascript">
+         $(document).ready(function() {
+            $('input').autoComplete();
+         });
+      </script>
+   </head>
+   <body>
+      <div>
+         <input value="My Default" />
+      </div>
+   </body>
+</html>

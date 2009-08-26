@@ -1,0 +1,103 @@
+.__AC_position {
+   background-image:    url(pointer.gif);
+   background-position: center top;
+   background-repeat:   no-repeat;
+   color:               #000000;
+   font-family:         Arial;
+   font-size:           11px;
+   padding-top:         11px;
+   position:            absolute;
+}
+
+.__AC_layer {
+   background-color: #F7ECCF;
+   border-radius:    4px;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   position:         relative;
+   padding:          15px 0px 10px 10px;
+}
+
+.__AC_icon {
+   background-position: center center;
+   background-repeat:   no-repeat;
+   border-left:         1px solid #C7C6B9;
+   position:            absolute;
+}
+
+.__AC_data {
+   max-height:    200px;
+   overflow-y:    auto;
+   padding-right: 10px;
+}
+
+.__AC_close {
+   background-image: url(close.gif);
+   cursor:           pointer;
+   height:           11px;
+   position:         absolute;
+   right:            2px;
+   top:              13px;
+   width:            11px;
+   z-index:          1;
+}
+
+.__AC_data div {
+   padding: 2px;
+}
+
+.__AC_data div:hover, .__AC_keyhover, .__AC_ie8HoverFix {
+   background-color: #F1851B;
+   cursor:           pointer;
+   color:            #ffffff;
+}
+
+div.__AC_invalidated {
+   background-color: #EBEBE9;
+   background-image: url(invalidated.gif);
+}
+
+input.__AC_invalidated {
+   background-color: #EBEBE9;
+   color:            #99A1AA;
+}
+
+div.__AC_editing {
+   background-color: #F3F1E;
+   background-image: url(editing.gif);
+}
+
+input.__AC_editing {
+   background-color: #F7ECCF;
+   color:            #D95E28;
+}
+
+div.__AC_validating {
+   background-color: #F7ECCF;
+   background-image: url(validating.gif);
+}
+
+input.__AC_validating {
+   background-color: #F7ECCF;
+   color:            #D95E28;
+}
+
+div.__AC_validated {
+   background-color: #EDF4D8;
+   background-image: url(validated.gif);
+}
+
+input.__AC_validated {
+   background-color: #EDF4D8;
+   color:            #42443F;
+}
+
+div.__AC_freetext {
+   background-color: #ECEDE1;
+   background-image: none;
+}
+
+input.__AC_freetext {
+   background-color: #ECEDE1;
+   color:            #3F3F3F;
+}
