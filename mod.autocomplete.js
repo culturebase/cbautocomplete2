@@ -1,4 +1,9 @@
 /**
+ * TODO's
+ * 1) scroll when using arrow keys and marked element is not visible
+ * 2) fix ie6 style issues
+ */
+/**
  * jQuery .autoComplete()
  *
  * Transforms an <input/> into an autoComplete box
