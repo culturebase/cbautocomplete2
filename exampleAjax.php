@@ -58,10 +58,10 @@ $footer = 'jQuery("<div>'.ml('autocomplete_city_missing').'</div>").click(functi
       "float": "left",
       "width": parseInt(jQuery(".__AC_data").innerWidth()) - 30 + "px",
       "height": "18px"
-   }).val("'.ml('autocomplete_city_info').'").focus(function() {
+   }).val("'.$_GET['actualInput'].'").focus(function() {
       jQuery(this).unbind("focus").css({
          "color": "#000000"
-      }).val("");
+      });
    }).parent().hover(function() {
       hoverEntry = true;
    }, function() {
