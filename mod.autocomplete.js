@@ -369,5 +369,5 @@ jQuery.fn.autoComplete = function(params) {
       }
 
    })
-
+   return false;
 };
