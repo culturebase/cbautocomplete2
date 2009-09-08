@@ -48,7 +48,11 @@ jQuery.fn.autoComplete = function(params) {
       /**
        * Where do we put the selected id?
        */
-      'putIdInto' : ''
+      'putIdInto': '',
+      /**
+       * Custom callback for click?
+       */
+      'customCallback': false
    };
    jQuery.extend(options, params);
 
@@ -191,6 +195,18 @@ jQuery.fn.autoComplete = function(params) {
                            if (typeof(JSONdata['results'][record]['customCallback']) != 'undefined') {
                               jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
                                  .appendTo(position).click(JSONdata['results'][record]['customCallback']).hover(function() {
+                                    jQuery(this).addClass('__AC_ie8HoverFix');
+                                    hoverEntry = true;
+                                    jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
+                                    isFreetext = false;
+                                 }, function() {
+                                    jQuery(this).removeClass('__AC_ie8HoverFix');
+                                    hoverEntry = false;
+                                 }
+                              );
+                           } else if (typeof(options['customCallback']) != 'undefined') {
+                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
+                                 .appendTo(position).click(options['customCallback']).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
                                     hoverEntry = true;
                                     jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
