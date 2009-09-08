@@ -189,7 +189,7 @@ jQuery.fn.autoComplete = function(params) {
                         var position = box.find('.__AC_data');
                         for (var record in JSONdata['results']) {
                            if (typeof(JSONdata['results'][record]['customCallback']) != 'undefined') {
-                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '">' + JSONdata['results'][record]['info'] + '</div>')
+                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
                                  .appendTo(position).click(JSONdata['results'][record]['customCallback']).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
                                     hoverEntry = true;
@@ -201,7 +201,7 @@ jQuery.fn.autoComplete = function(params) {
                                  }
                               );
                            } else {
-                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '">' + JSONdata['results'][record]['info'] + '</div>')
+                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
                                  .appendTo(position).click(function() {
                                     jQuery(element).val(jQuery(this).attr('title'));
                                     validated();
@@ -210,7 +210,7 @@ jQuery.fn.autoComplete = function(params) {
                                     typed = def = jQuery(this).attr('title');
                                     isFreetext = false;
                                     if (options['putIdInto'] != "") {
-                                       jQuery(options['putIdInto']).val(JSONdata['results'][record]['id']);
+                                       jQuery(options['putIdInto']).val(jQuery(this).attr('id'));
                                     }
                                  }).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
