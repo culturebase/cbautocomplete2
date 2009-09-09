@@ -52,7 +52,15 @@ jQuery.fn.autoComplete = function(params) {
       /**
        * Custom callback for click?
        */
-      'customCallback': false
+      'customCallback': false,
+      /**
+       * Custom callback for click?
+       */
+      'header': false,
+      /**
+       * Custom callback for click?
+       */
+      'footer': false
    };
    jQuery.extend(options, params);
 
@@ -188,6 +196,8 @@ jQuery.fn.autoComplete = function(params) {
                      );
                      if (JSONdata['header'] != undefined) {
                         box.find('.__AC_layer').prepend(JSONdata['header']);
+                     } else if (options['header']) {
+                        box.find('.__AC_layer').prepend(options['header']);
                      }
                      if (JSONdata['results'] != undefined) {
                         var position = box.find('.__AC_data');
@@ -242,6 +252,8 @@ jQuery.fn.autoComplete = function(params) {
                      }
                      if (JSONdata['footer'] != undefined) {
                         box.find('.__AC_layer').append(JSONdata['footer']);
+                     } else if (options['footer']) {
+                        box.find('.__AC_layer').prepend(options['footer']);
                      }
                      box.css({
                         'left':   element.offsetLeft + 'px',
