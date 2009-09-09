@@ -206,7 +206,9 @@ jQuery.fn.autoComplete = function(params) {
                               );
                            } else if (options['customCallback']) {
                               jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                 .appendTo(position).click(function(){options['customCallback']()}).hover(function() {
+                                 .appendTo(position).click(function() {
+                                       options['customCallback']();
+                                 }).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
                                     hoverEntry = true;
                                     jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
