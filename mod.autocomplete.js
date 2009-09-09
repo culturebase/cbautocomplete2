@@ -253,7 +253,7 @@ jQuery.fn.autoComplete = function(params) {
                      if (JSONdata['footer'] != undefined) {
                         box.find('.__AC_layer').append(JSONdata['footer']);
                      } else if (options['footer']) {
-                        box.find('.__AC_layer').prepend(options['footer']);
+                        box.find('.__AC_layer').append(options['footer']);
                      }
                      box.css({
                         'left':   element.offsetLeft + 'px',
