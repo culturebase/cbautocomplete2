@@ -54,11 +54,11 @@ jQuery.fn.autoComplete = function(params) {
        */
       'customCallback': false,
       /**
-       * Custom callback for click?
+       * Header
        */
       'header': false,
       /**
-       * Custom callback for click?
+       * Footer
        */
       'footer': false
    };
