@@ -205,7 +205,6 @@ jQuery.fn.autoComplete = function(params) {
                                  }
                               );
                            } else if (options['customCallback']) {
-                              alert('using custom callback!');
                               jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
                                  .appendTo(position).click(options['customCallback']).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
