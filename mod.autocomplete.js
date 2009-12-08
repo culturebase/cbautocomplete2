@@ -54,6 +54,10 @@ jQuery.fn.autoComplete = function(params) {
        */
       'customCallback': false,
       /**
+       * Custom function after click?
+       */
+      'customFunction': false,
+      /**
        * Header
        */
       'header': false,
@@ -247,6 +251,11 @@ jQuery.fn.autoComplete = function(params) {
                                     hoverEntry = false;
                                  }
                               );
+                              if(options['customFunction'] != "")
+                              {
+                                 custumFunc = new Function(options['customFunction']);
+                                 customFunc();
+                              }
                            }
                         }
                      }
