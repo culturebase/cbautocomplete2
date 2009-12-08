@@ -253,7 +253,7 @@ jQuery.fn.autoComplete = function(params) {
                               );
                               if(options['customFunction'] != "")
                               {
-                                 custumFunc = new Function(options['customFunction']);
+                                 custumFunc = options['customFunction'];
                                  customFunc();
                               }
                            }
