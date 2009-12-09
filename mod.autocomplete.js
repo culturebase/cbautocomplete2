@@ -54,6 +54,10 @@ jQuery.fn.autoComplete = function(params) {
        */
       'customCallback': false,
       /**
+       * Custom callback final for click?
+       */
+      'customCallbackFinal': false,
+      /**
        * Header
        */
       'header': false,
@@ -237,6 +241,9 @@ jQuery.fn.autoComplete = function(params) {
                                     isFreetext = false;
                                     if (options['putIdInto'] != "") {
                                        jQuery(options['putIdInto']).val(jQuery(this).attr('id'));
+                                    }
+                                    if (options['customCallbackFinal']) {
+                                       options['customCallbackFinal']();
                                     }
                                  }).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
