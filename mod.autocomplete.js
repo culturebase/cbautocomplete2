@@ -243,7 +243,7 @@ jQuery.fn.autoComplete = function(params) {
                                        jQuery(options['putIdInto']).val(jQuery(this).attr('id'));
                                     }
                                     if (options['customCallbackFinal']) {
-                                       options['customCallbackFinal']();
+                                       options['customCallbackFinal'];
                                     }
                                  }).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
