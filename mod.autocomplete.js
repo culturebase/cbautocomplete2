@@ -260,8 +260,8 @@ jQuery.fn.autoComplete = function(params) {
                               );
                            }
                         }
-                     } else if (options['emptyFooter'] !== false) {
-                        box.find('.__AC_data').html(options['emptyFooter']);
+                     } else if (options['emptyFooter']) {
+                        box.find('.__AC_layer').append(jQuery(options['emptyFooter']).clone(true));
                      }
                      if (JSONdata['footer'] != undefined) {
                         box.find('.__AC_layer').append(JSONdata['footer']);
