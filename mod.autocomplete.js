@@ -261,8 +261,7 @@ jQuery.fn.autoComplete = function(params) {
                            }
                         }
                      } else if (options['emptyFooter']) {
-                        alert(options['emptyFooter']);
-                        box.find('.__AC_layer').append(jQuery(options['emptyFooter']).clone(true));
+                        box.find('.__AC_layer').append(jQuery(options['emptyFooter']));
                      }
                      if (JSONdata['footer'] != undefined) {
                         box.find('.__AC_layer').append(JSONdata['footer']);
