@@ -209,7 +209,7 @@ jQuery.fn.autoComplete = function(params) {
                      }
                      if (JSONdata['results'] != undefined) {
                         var position = box.find('.__AC_data');
-                        console.log(JSONdata['results']);
+                        alert(JSONdata['results'].length);
                         if (JSONdata['results'].length > 0) {
                            for (var record in JSONdata['results']) {
                               if (typeof(JSONdata['results'][record]['customCallback']) != 'undefined') {
