@@ -209,62 +209,59 @@ jQuery.fn.autoComplete = function(params) {
                      }
                      if (JSONdata['results'] != undefined) {
                         var position = box.find('.__AC_data');
-                        alert(JSONdata['results']);
-                        if (JSONdata['results'].length > 0) {
-                           for (var record in JSONdata['results']) {
-                              if (typeof(JSONdata['results'][record]['customCallback']) != 'undefined') {
-                                 jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                    .appendTo(position).click(JSONdata['results'][record]['customCallback']).hover(function() {
-                                       jQuery(this).addClass('__AC_ie8HoverFix');
-                                       hoverEntry = true;
-                                       jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
-                                       isFreetext = false;
-                                    }, function() {
-                                       jQuery(this).removeClass('__AC_ie8HoverFix');
-                                       hoverEntry = false;
+                        for (var record in JSONdata['results']) {
+                           if (typeof(JSONdata['results'][record]['customCallback']) != 'undefined') {
+                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
+                                 .appendTo(position).click(JSONdata['results'][record]['customCallback']).hover(function() {
+                                    jQuery(this).addClass('__AC_ie8HoverFix');
+                                    hoverEntry = true;
+                                    jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
+                                    isFreetext = false;
+                                 }, function() {
+                                    jQuery(this).removeClass('__AC_ie8HoverFix');
+                                    hoverEntry = false;
+                                 }
+                              );
+                           } else if (options['customCallback']) {
+                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
+                                 .appendTo(position).click(options['customCallback']).hover(function() {
+                                    jQuery(this).addClass('__AC_ie8HoverFix');
+                                    hoverEntry = true;
+                                    jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
+                                    isFreetext = false;
+                                 }, function() {
+                                    jQuery(this).removeClass('__AC_ie8HoverFix');
+                                    hoverEntry = false;
+                                 }
+                              );
+                           } else {
+                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
+                                 .appendTo(position).click(function() {
+                                    jQuery(element).val(jQuery(this).attr('title'));
+                                    validated();
+                                    hideBox();
+                                    hoverEntry = false;
+                                    typed = def = jQuery(this).attr('title');
+                                    isFreetext = false;
+                                    if (options['putIdInto'] != "") {
+                                       jQuery(options['putIdInto']).val(jQuery(this).attr('id'));
                                     }
-                                 );
-                              } else if (options['customCallback']) {
-                                 jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                    .appendTo(position).click(options['customCallback']).hover(function() {
-                                       jQuery(this).addClass('__AC_ie8HoverFix');
-                                       hoverEntry = true;
-                                       jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
-                                       isFreetext = false;
-                                    }, function() {
-                                       jQuery(this).removeClass('__AC_ie8HoverFix');
-                                       hoverEntry = false;
+                                    if (options['customCallbackFinal']) {
+                                       options['customCallbackFinal']();
                                     }
-                                 );
-                              } else {
-                                 jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                    .appendTo(position).click(function() {
-                                       jQuery(element).val(jQuery(this).attr('title'));
-                                       validated();
-                                       hideBox();
-                                       hoverEntry = false;
-                                       typed = def = jQuery(this).attr('title');
-                                       isFreetext = false;
-                                       if (options['putIdInto'] != "") {
-                                          jQuery(options['putIdInto']).val(jQuery(this).attr('id'));
-                                       }
-                                       if (options['customCallbackFinal']) {
-                                          options['customCallbackFinal']();
-                                       }
-                                    }).hover(function() {
-                                       jQuery(this).addClass('__AC_ie8HoverFix');
-                                       jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
-                                       hoverEntry = true;
-                                    }, function() {
-                                       jQuery(this).removeClass('__AC_ie8HoverFix');
-                                       hoverEntry = false;
-                                    }
-                                 );
-                              }
+                                 }).hover(function() {
+                                    jQuery(this).addClass('__AC_ie8HoverFix');
+                                    jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
+                                    hoverEntry = true;
+                                 }, function() {
+                                    jQuery(this).removeClass('__AC_ie8HoverFix');
+                                    hoverEntry = false;
+                                 }
+                              );
                            }
-                        } else if (options['emptyFooter'] != undefined) {
-                           box.find('.__AC_layer').append(options['emptyFooter'].clone(true));
                         }
+                     } else if (options['emptyFooter'] != undefined) {
+                        box.find('.__AC_layer').append(options['emptyFooter'].clone(true));
                      }
                      if (JSONdata['footer'] != undefined) {
                         box.find('.__AC_layer').append(JSONdata['footer']);
