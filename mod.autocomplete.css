@@ -16,6 +16,7 @@
    -webkit-border-radius: 4px;
    position:         relative;
    padding:          15px 0px 10px 10px;
+   z-index:          1;
 }
 
 .__AC_icon {
