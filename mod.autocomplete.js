@@ -269,8 +269,8 @@ jQuery.fn.autoComplete = function(params) {
                         box.find('.__AC_layer').append(jQuery(options['footer']).clone(true));
                      }
                      box.css({
-                        'left':   element.offsetLeft + 'px',
-                        'top':   element.offsetTop + jQuery(element).outerHeight() + 'px',
+                        'left':  jQuery(element).offset().left + 'px',
+                        'top':   jQuery(element).offset().top + jQuery(element).outerHeight() + 'px',
                         'width': jQuery(element).outerWidth() + 'px'
                      });
                      jQuery(element).parent().append(box);
