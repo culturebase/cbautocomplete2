@@ -74,7 +74,7 @@ jQuery.fn.autoComplete = function(params) {
 
    jQuery(this).each(function() {
       //ToDo: save old blur function for later useage
-      jQuery(this).unbind('blur')
+      jQuery(this).unbind('blur');
       //ToDo: bind only <input/>
       //ToDo: compare parameters with old box
       //ToDo: icon not over border
@@ -385,6 +385,11 @@ jQuery.fn.autoComplete = function(params) {
             }, options['waitTime']);
          }
       });
+      
+      /**
+       * Initialize <input/>
+       */
+      jQuery(element).addClass('__AC_input');
 
       /**
        * Place the icon at the right place
@@ -393,9 +398,11 @@ jQuery.fn.autoComplete = function(params) {
          'height':  jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-top-width'))
                     - parseInt(jQuery(element).css('border-bottom-width'))+ 'px',
-         'left':    element.offsetLeft + jQuery(element).outerWidth()
+         /*'left':    element.offsetLeft + jQuery(element).outerWidth()
                     - jQuery(element).outerHeight() - 1 + 'px',
-         'top':     element.offsetTop + parseInt(jQuery(element).css('border-top-width')) + 'px',
+         'top':     element.offsetTop + parseInt(jQuery(element).css('border-top-width')) + 'px',*/
+         'top':     (jQuery(element).outerHeight() * -1)+'px',
+         'right':   '0px',
          'width':   jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-right-width')) + 'px'
       });

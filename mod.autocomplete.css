@@ -43,6 +43,10 @@
    z-index:          1;
 }
 
+.__AC_input {
+   position: relative;
+}
+
 .__AC_data div {
    padding: 2px;
 }
