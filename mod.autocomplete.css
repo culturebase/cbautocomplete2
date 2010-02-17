@@ -23,7 +23,7 @@
    background-position: center center;
    background-repeat:   no-repeat;
    border-left:         1px solid #C7C6B9;
-   position:            absolute;
+   position:            relative;
 }
 
 .__AC_data {
