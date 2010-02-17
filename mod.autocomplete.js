@@ -188,7 +188,7 @@ jQuery.fn.autoComplete = function(params) {
             boxShown = true;
             jQuery.get(
                options['requestUrl'],
-               options['requestParam'] + '=' + encodeURIComponent(typed),
+               options['requestParam']+'='+encodeURIComponent(typed),
                function(data) {
                   if (hasFocus || !options['closeWhenBlur']) {
                      var JSONdata = eval('('+data+')');
@@ -393,9 +393,9 @@ jQuery.fn.autoComplete = function(params) {
          'height':  jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-top-width'))
                     - parseInt(jQuery(element).css('border-bottom-width'))+ 'px',
-         'left':    element.offsetLeft + jQuery(element).outerWidth()
+         'left':    jQuery(element).offset().left + jQuery(element).outerWidth()
                     - jQuery(element).outerHeight() - 1 + 'px',
-         'top':     element.offsetTop + parseInt(jQuery(element).css('border-top-width')) + 'px',
+         'top':     jQuery(element).offset().top + parseInt(jQuery(element).css('border-top-width')) + 'px',
          'width':   jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-right-width')) + 'px'
       });
