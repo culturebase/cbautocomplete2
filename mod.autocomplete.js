@@ -188,7 +188,7 @@ jQuery.fn.autoComplete = function(params) {
             boxShown = true;
             jQuery.get(
                options['requestUrl'],
-               options['requestParam'] + '=' + typed,
+               options['requestParam'] + '=' + encodeURIComponent(typed),
                function(data) {
                   if (hasFocus || !options['closeWhenBlur']) {
                      var JSONdata = eval('('+data+')');
