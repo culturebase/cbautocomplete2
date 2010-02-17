@@ -23,7 +23,7 @@
    background-position: center center;
    background-repeat:   no-repeat;
    border-left:         1px solid #C7C6B9;
-   position:            relative;
+   position:            absolute;
 }
 
 .__AC_data {
@@ -41,10 +41,6 @@
    top:              13px;
    width:            11px;
    z-index:          1;
-}
-
-.__AC_input {
-   position: relative;
 }
 
 .__AC_data div {

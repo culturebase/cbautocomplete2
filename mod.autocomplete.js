@@ -387,22 +387,15 @@ jQuery.fn.autoComplete = function(params) {
       });
       
       /**
-       * Initialize <input/>
-       */
-      jQuery(element).addClass('__AC_input');
-
-      /**
        * Place the icon at the right place
        */
       icon.insertAfter(element).css({
          'height':  jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-top-width'))
                     - parseInt(jQuery(element).css('border-bottom-width'))+ 'px',
-         /*'left':    element.offsetLeft + jQuery(element).outerWidth()
+         'left':    element.offsetLeft + jQuery(element).outerWidth()
                     - jQuery(element).outerHeight() - 1 + 'px',
-         'top':     element.offsetTop + parseInt(jQuery(element).css('border-top-width')) + 'px',*/
-         'top':     (jQuery(element).outerHeight() * -1)+'px',
-         'right':   '0px',
+         'top':     element.offsetTop + parseInt(jQuery(element).css('border-top-width')) + 'px',
          'width':   jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-right-width')) + 'px'
       });
