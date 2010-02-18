@@ -64,11 +64,7 @@ jQuery.fn.autoComplete = function(params) {
       /**
        * Footer
        */
-      'footer': false,
-      /**
-       * Footer to display if there are no records
-       */
-      'emptyFooter': false
+      'footer': false
    };
    jQuery.extend(options, params);
 
@@ -260,8 +256,6 @@ jQuery.fn.autoComplete = function(params) {
                               );
                            }
                         }
-                     } else if (options['emptyFooter']) {
-                        box.find('.__AC_layer').append(jQuery(options['emptyFooter']).clone(true));
                      }
                      if (JSONdata['footer'] != undefined) {
                         box.find('.__AC_layer').append(JSONdata['footer']);
@@ -269,8 +263,8 @@ jQuery.fn.autoComplete = function(params) {
                         box.find('.__AC_layer').append(jQuery(options['footer']).clone(true));
                      }
                      box.css({
-                        'left':  jQuery(element).offset().left + 'px',
-                        'top':   jQuery(element).offset().top + jQuery(element).outerHeight() + 'px',
+                        'left':   element.offsetLeft + 'px',
+                        'top':   element.offsetTop + jQuery(element).outerHeight() + 'px',
                         'width': jQuery(element).outerWidth() + 'px'
                      });
                      jQuery(element).parent().append(box);
