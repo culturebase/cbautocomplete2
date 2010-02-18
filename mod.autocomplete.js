@@ -74,7 +74,7 @@ jQuery.fn.autoComplete = function(params) {
 
    jQuery(this).each(function() {
       //ToDo: save old blur function for later useage
-      jQuery(this).unbind('blur');
+      jQuery(this).unbind('blur')
       //ToDo: bind only <input/>
       //ToDo: compare parameters with old box
       //ToDo: icon not over border
@@ -188,7 +188,7 @@ jQuery.fn.autoComplete = function(params) {
             boxShown = true;
             jQuery.get(
                options['requestUrl'],
-               options['requestParam']+'='+encodeURIComponent(typed),
+               options['requestParam'] + '=' + typed,
                function(data) {
                   if (hasFocus || !options['closeWhenBlur']) {
                      var JSONdata = eval('('+data+')');
@@ -269,9 +269,9 @@ jQuery.fn.autoComplete = function(params) {
                         box.find('.__AC_layer').append(jQuery(options['footer']).clone(true));
                      }
                      box.css({
-                        'left':  parseInt(jQuery(element).offset().left)+'px',
-                        'top':   parseInt(jQuery(element).offset().top + jQuery(element).outerHeight())+'px',
-                        'width': parseInt(jQuery(element).outerWidth())+'px'
+                        'left':  jQuery(element).offset().left + 'px',
+                        'top':   jQuery(element).offset().top + jQuery(element).outerHeight() + 'px',
+                        'width': jQuery(element).outerWidth() + 'px'
                      });
                      jQuery(element).parent().append(box);
                      editing();
@@ -385,7 +385,7 @@ jQuery.fn.autoComplete = function(params) {
             }, options['waitTime']);
          }
       });
-      
+
       /**
        * Place the icon at the right place
        */
@@ -393,9 +393,9 @@ jQuery.fn.autoComplete = function(params) {
          'height':  jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-top-width'))
                     - parseInt(jQuery(element).css('border-bottom-width'))+ 'px',
-         'left':    jQuery(element).offset().left + jQuery(element).outerWidth()
+         'left':    element.offsetLeft + jQuery(element).outerWidth()
                     - jQuery(element).outerHeight() - 1 + 'px',
-         'top':     jQuery(element).offset().top + parseInt(jQuery(element).css('border-top-width')) + 'px',
+         'top':     element.offsetTop + parseInt(jQuery(element).css('border-top-width')) + 'px',
          'width':   jQuery(element).outerHeight()
                     - parseInt(jQuery(element).css('border-right-width')) + 'px'
       });
