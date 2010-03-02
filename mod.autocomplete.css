@@ -18,13 +18,6 @@
    padding:          15px 0px 10px 10px;
 }
 
-.__AC_icon {
-   background-position: center center;
-   background-repeat:   no-repeat;
-   border-left:         1px solid #C7C6B9;
-   position:            absolute;
-}
-
 .__AC_data {
    max-height:    200px;
    overflow-y:    auto;
@@ -52,22 +45,12 @@
    color:            #ffffff;
 }
 
-div.__AC_invalidated {
-   background-color: #EBEBE9;
-   background-image: url(invalidated.gif);
-}
-
 input.__AC_invalidated {
    background-color: #EBEBE9;
    color:            #99A1AA;
    background-image: url(invalidated.gif);
    background-position: right;
    background-repeat:   no-repeat;
-}
-
-div.__AC_editing {
-   background-color: #F3F1E;
-   background-image: url(editing.gif);
 }
 
 input.__AC_editing {
@@ -78,29 +61,20 @@ input.__AC_editing {
    background-repeat: no-repeat;
 }
 
-div.__AC_validating {
-   background-color: #F7ECCF;
-   background-image: url(validating.gif);
-}
-
 input.__AC_validating {
    background-color: #F7ECCF;
    color:            #D95E28;
-}
-
-div.__AC_validated {
-   background-color: #EDF4D8;
-   background-image: url(validated.gif);
+   background-image: url(validating.gif);
+   background-position: right;
+   background-repeat: no-repeat;
 }
 
 input.__AC_validated {
    background-color: #EDF4D8;
    color:            #42443F;
-}
-
-div.__AC_freetext {
-   background-color: #ECEDE1;
-   background-image: none;
+   background-image: url(validated.gif);
+   background-position: right;
+   background-repeat: no-repeat;
 }
 
 input.__AC_freetext {
