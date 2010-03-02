@@ -60,6 +60,9 @@ div.__AC_invalidated {
 input.__AC_invalidated {
    background-color: #EBEBE9;
    color:            #99A1AA;
+   background-image: url(invalidated.gif);
+   background-position: right;
+   background-repeat:   no-repeat;
 }
 
 div.__AC_editing {
@@ -70,6 +73,9 @@ div.__AC_editing {
 input.__AC_editing {
    background-color: #F7ECCF;
    color:            #D95E28;
+   background-image: url(editing.gif);
+   background-position: right;
+   background-repeat: no-repeat;
 }
 
 div.__AC_validating {

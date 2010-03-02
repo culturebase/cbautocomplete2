@@ -89,10 +89,6 @@ jQuery.fn.autoComplete = function(params) {
        */
       var box = jQuery('<div class="__AC_position"><div class="__AC_close"></div><div class="__AC_layer"></div></div>');
       /**
-       * HTML Code for the icon
-       */
-      var icon = jQuery('<div class="__AC_icon __AC_invalidated"></div>');
-      /**
        * The default value of the box
        */
       var def = jQuery(element).val();
@@ -129,8 +125,6 @@ jQuery.fn.autoComplete = function(params) {
        * Display the validated state
        */
       var validated = function() {
-         icon.removeClass('__AC_invalidated __AC_validating __AC_editing __AC_freetext')
-            .addClass('__AC_validated');
          jQuery(element).removeClass('__AC_invalidated __AC_validating __AC_editing __AC_freetext')
             .addClass('__AC_validated');
       };
@@ -139,8 +133,6 @@ jQuery.fn.autoComplete = function(params) {
        * Display the invalidated state
        */
       var invalidated = function() {
-         icon.removeClass('__AC_validated __AC_validating __AC_editing __AC_freetext')
-            .addClass('__AC_invalidated');
          jQuery(element).removeClass('__AC_validated __AC_validating __AC_editing __AC_freetext')
             .addClass('__AC_invalidated');
       };
@@ -149,8 +141,6 @@ jQuery.fn.autoComplete = function(params) {
        * Display the working state
        */
       var validating = function() {
-         icon.removeClass('__AC_validated __AC_invalidated __AC_editing __AC_freetext')
-            .addClass('__AC_validating');
          jQuery(element).removeClass('__AC_validated __AC_invalidated __AC_editing __AC_freetext')
             .addClass('__AC_validating');
       };
@@ -159,8 +149,6 @@ jQuery.fn.autoComplete = function(params) {
        * Display the editing state
        */
       var editing = function() {
-         icon.removeClass('__AC_validated __AC_invalidated __AC_validating __AC_freetext')
-            .addClass('__AC_editing');
          jQuery(element).removeClass('__AC_validated __AC_invalidated __AC_validating __AC_freetext')
             .addClass('__AC_editing');
       };
@@ -169,8 +157,6 @@ jQuery.fn.autoComplete = function(params) {
        * Display the freetext state
        */
       var freetext = function() {
-         icon.removeClass('__AC_validated __AC_invalidated __AC_validating __AC_editing')
-            .addClass('__AC_freetext');
          jQuery(element).removeClass('__AC_validated __AC_invalidated __AC_validating __AC_editing')
             .addClass('__AC_freetext');
       };
@@ -378,20 +364,6 @@ jQuery.fn.autoComplete = function(params) {
                showBox();
             }, options['waitTime']);
          }
-      });
-
-      /**
-       * Place the icon at the right place
-       */
-      icon.insertAfter(element).css({
-         'height':  jQuery(element).outerHeight()
-                    - parseInt(jQuery(element).css('border-top-width'))
-                    - parseInt(jQuery(element).css('border-bottom-width'))+ 'px',
-         'left':    element.offsetLeft + jQuery(element).outerWidth()
-                    - jQuery(element).outerHeight() - 1 + 'px',
-         'top':     element.offsetTop + parseInt(jQuery(element).css('border-top-width')) + 'px',
-         'width':   jQuery(element).outerHeight()
-                    - parseInt(jQuery(element).css('border-right-width')) + 'px'
       });
 
       /**
