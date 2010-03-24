@@ -293,9 +293,6 @@ jQuery.fn.autoComplete = function(params) {
             } else {
                invalidated();
             }
-         } else  if (options['allowFreetext']) {
-            hideBox();
-            freetext();
          } else if (!hoverEntry && options['closeWhenBlur']) {
             hideBox();
             if (def != jQuery(element).val()) {
@@ -315,6 +312,9 @@ jQuery.fn.autoComplete = function(params) {
             } else {
                validated();
             }
+         } else if (options['allowFreetext']) {
+            hideBox();
+            freetext();
          }
       });
 
