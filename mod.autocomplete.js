@@ -14,7 +14,7 @@
 jQuery.fn.autoComplete = function(params) {
 
    /**
-    * All possible parameters with their default value
+    * Predefined parameters with their default value
     */
    var options = {
       /**
@@ -66,7 +66,19 @@ jQuery.fn.autoComplete = function(params) {
        */
       'footer': false
    };
-   jQuery.extend(options, params);
+
+   /*
+    * All other parameters are passed on as extra request parameters
+    */
+   var extra = {};
+   for(var param in params) {
+      if (options[param] != undefined) {
+         options[param] = params[param];
+      } else {
+         extra[param] = params[param];
+      }
+   }
+   options.extraParams = extra;
 
    jQuery(this).each(function() {
       //ToDo: save old blur function for later useage
@@ -168,12 +180,17 @@ jQuery.fn.autoComplete = function(params) {
          if (hasFocus || !options['closeWhenBlur']) {
             validating();
             boxShown = true;
+            options.extraParams[options.requestParam] = typed;
             jQuery.get(
                options['requestUrl'],
-               options['requestParam'] + '=' + typed,
+               options.extraParams,
                function(data) {
                   if (hasFocus || !options['closeWhenBlur']) {
                      var JSONdata = eval('('+data+')');
+
+                     /* handle deprecated format: {data : [{ results : [...] }] */
+                     if (JSONdata.data != undefined && JSONdata.results == undefined) JSONdata = JSONdata.data[0];
+
                      box.find('.__AC_layer').html('<div class="__AC_data"></div>');
                      box.find('.__AC_close').click(function() {
                         hoverEntry = false;
