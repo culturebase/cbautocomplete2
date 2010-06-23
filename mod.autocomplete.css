@@ -51,6 +51,7 @@ input.__AC_invalidated {
    background-image: url(invalidated.gif);
    background-position: right center;
    background-repeat:   no-repeat;
+   font-style:       normal !important;
 }
 
 input.__AC_editing {
@@ -59,6 +60,7 @@ input.__AC_editing {
    background-image: url(editing.gif);
    background-position: right center;
    background-repeat: no-repeat;
+   font-style:       normal !important;
 }
 
 input.__AC_validating {
@@ -67,6 +69,7 @@ input.__AC_validating {
    background-image: url(validating.gif);
    background-position: right center;
    background-repeat: no-repeat;
+   font-style:       normal !important;
 }
 
 input.__AC_validated {
@@ -75,9 +78,11 @@ input.__AC_validated {
    background-image: url(validated.gif);
    background-position: right center;
    background-repeat: no-repeat;
+   font-style:       normal !important;
 }
 
 input.__AC_freetext {
    background-color: #ECEDE1 !important;
    color:            #3F3F3F !important;
+   font-style:       normal !important;
 }
