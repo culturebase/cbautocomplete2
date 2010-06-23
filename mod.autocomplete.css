@@ -46,38 +46,38 @@
 }
 
 input.__AC_invalidated {
-   background-color: #EBEBE9;
-   color:            #99A1AA;
+   background-color: #EBEBE9 !important;
+   color:            #99A1AA !important;
    background-image: url(invalidated.gif);
    background-position: right center;
    background-repeat:   no-repeat;
 }
 
 input.__AC_editing {
-   background-color: #F7ECCF;
-   color:            #D95E28;
+   background-color: #F7ECCF !important;
+   color:            #D95E28 !important;
    background-image: url(editing.gif);
    background-position: right center;
    background-repeat: no-repeat;
 }
 
 input.__AC_validating {
-   background-color: #F7ECCF;
-   color:            #D95E28;
+   background-color: #F7ECCF !important;
+   color:            #D95E28 !important;
    background-image: url(validating.gif);
    background-position: right center;
    background-repeat: no-repeat;
 }
 
 input.__AC_validated {
-   background-color: #EDF4D8;
-   color:            #42443F;
+   background-color: #EDF4D8 !important;
+   color:            #42443F !important;
    background-image: url(validated.gif);
    background-position: right center;
    background-repeat: no-repeat;
 }
 
 input.__AC_freetext {
-   background-color: #ECEDE1;
-   color:            #3F3F3F;
+   background-color: #ECEDE1 !important;
+   color:            #3F3F3F !important;
 }
