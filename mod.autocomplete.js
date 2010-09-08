@@ -82,7 +82,7 @@ jQuery.fn.autoComplete = function(params) {
 
    jQuery(this).each(function() {
       //ToDo: save old blur function for later useage
-      jQuery(this).unbind('blur')
+      jQuery(this).unbind('blur');
       //ToDo: bind only <input/>
       //ToDo: compare parameters with old box
       //ToDo: icon not over border
@@ -181,12 +181,11 @@ jQuery.fn.autoComplete = function(params) {
             validating();
             boxShown = true;
             options.extraParams[options.requestParam] = typed;
-            jQuery.get(
+            jQuery.getJSON(
                options['requestUrl'],
                options.extraParams,
-               function(data) {
+               function(JSONdata) {
                   if (hasFocus || !options['closeWhenBlur']) {
-                     var JSONdata = eval('('+data+')');
 
                      /* handle deprecated format: {data : [{ results : [...] }] */
                      if (JSONdata.data != undefined && JSONdata.results == undefined) JSONdata = JSONdata.data[0];
@@ -392,5 +391,5 @@ jQuery.fn.autoComplete = function(params) {
          invalidated();
       }
 
-   })
+   });
 };
