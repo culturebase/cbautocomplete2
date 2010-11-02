@@ -173,6 +173,21 @@ jQuery.fn.autoComplete = function(params) {
             .addClass('__AC_freetext');
       };
 
+      var selectEntry = function() {
+         jQuery(element).val(jQuery(this).attr('title'));
+         validated();
+         hideBox();
+         hoverEntry = false;
+         typed = def = jQuery(this).attr('title');
+         isFreetext = false;
+         if (options['putIdInto'] != "") {
+            jQuery(options['putIdInto']).val(jQuery(this).attr('id'));
+         }
+         if (options['customCallbackFinal']) {
+            options['customCallbackFinal']();
+         }
+      };
+      
       /**
        * Show box
        */
@@ -234,20 +249,7 @@ jQuery.fn.autoComplete = function(params) {
                               );
                            } else {
                               jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                 .appendTo(position).click(function() {
-                                    jQuery(element).val(jQuery(this).attr('title'));
-                                    validated();
-                                    hideBox();
-                                    hoverEntry = false;
-                                    typed = def = jQuery(this).attr('title');
-                                    isFreetext = false;
-                                    if (options['putIdInto'] != "") {
-                                       jQuery(options['putIdInto']).val(jQuery(this).attr('id'));
-                                    }
-                                    if (options['customCallbackFinal']) {
-                                       options['customCallbackFinal']();
-                                    }
-                                 }).hover(function() {
+                                 .appendTo(position).click(selectEntry).hover(function() {
                                     jQuery(this).addClass('__AC_ie8HoverFix');
                                     jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
                                     hoverEntry = true;
@@ -334,6 +336,17 @@ jQuery.fn.autoComplete = function(params) {
          }
       });
 
+      
+      /**
+       * Key enter, has to be done on keypress so that it happens before any submit events
+       */
+      jQuery(element).keypress(function(keyCapture) {
+         if (keyCapture.which == '13') {
+            selectEntry.call(jQuery('.__AC_keyhover'));
+            jQuery(element).blur();
+         }
+      });
+
       /**
        * Pressing and button which the box has focus
        */
@@ -366,12 +379,6 @@ jQuery.fn.autoComplete = function(params) {
             } else {
                jQuery('.__AC_keyhover').removeClass('__AC_keyhover').next().addClass('__AC_keyhover');
             }
-          /**
-           * Key enter
-           */
-         } else if (keyCapture.which == '13') {
-            jQuery('.__AC_keyhover').click();
-            jQuery(element).blur();
          } else if (typed.length < options['minimumKeys']) {
             hideBox();
          } else if (def != typed && typed.length >= options['minimumKeys']) {
