@@ -64,7 +64,11 @@ jQuery.fn.autoComplete = function(params) {
       /**
        * Footer
        */
-      'footer': false
+      'footer': false,
+      /**
+       * Trap "enter" keypress to avoid submitting forms?
+       */
+      'trapEnter': false
    };
 
    /*
@@ -343,8 +347,9 @@ jQuery.fn.autoComplete = function(params) {
       jQuery(element).keypress(function(keyCapture) {
          if (keyCapture.which == '13') {
             selectEntry.call(jQuery('.__AC_keyhover'));
-            jQuery(element).blur();
+            return !options.trapEnter;
          }
+         return true;
       });
 
       /**
