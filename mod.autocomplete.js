@@ -116,6 +116,8 @@ jQuery.fn.autoComplete = function(params) {
        * HTML Code for the box
        */
       var box = jQuery('<div class="__AC_position"><div class="__AC_close"></div><div class="__AC_layer"></div></div>');
+      var validating_box = jQuery('<div class="__AC_position"><div class="__AC_layer __AC_validating"></div></div>');
+
       /**
        * The default value of the box
        */
@@ -155,6 +157,7 @@ jQuery.fn.autoComplete = function(params) {
       var validated = function() {
          jQuery(element).removeClass('__AC_invalidated __AC_validating __AC_editing __AC_freetext')
             .addClass('__AC_validated');
+         validating_box.remove();
       };
 
       /**
@@ -163,6 +166,7 @@ jQuery.fn.autoComplete = function(params) {
       var invalidated = function() {
          jQuery(element).removeClass('__AC_validated __AC_validating __AC_editing __AC_freetext')
             .addClass('__AC_invalidated');
+         validating_box.remove();
       };
 
       /**
@@ -171,6 +175,7 @@ jQuery.fn.autoComplete = function(params) {
       var validating = function() {
          jQuery(element).removeClass('__AC_validated __AC_invalidated __AC_editing __AC_freetext')
             .addClass('__AC_validating');
+         validating_box.remove();
       };
 
       /**
@@ -179,6 +184,13 @@ jQuery.fn.autoComplete = function(params) {
       var editing = function() {
          jQuery(element).removeClass('__AC_validated __AC_invalidated __AC_validating __AC_freetext')
             .addClass('__AC_editing');
+
+         jQuery(element).one('keypress', function(e) {
+            if (!boxShown && e.which != 13 && e.which != 27) {
+               validating_box.appendTo(jQuery(element).parent())
+                     .css('width', jQuery(element).outerWidth() + 'px');
+            }
+         });
       };
 
       /**
@@ -187,6 +199,7 @@ jQuery.fn.autoComplete = function(params) {
       var freetext = function() {
          jQuery(element).removeClass('__AC_validated __AC_invalidated __AC_validating __AC_editing')
             .addClass('__AC_freetext');
+         validating_box.remove();
       };
 
       var selectEntry = function() {

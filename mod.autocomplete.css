@@ -64,7 +64,7 @@ input.__AC_editing {
    font-style:       normal !important;
 }
 
-input.__AC_validating {
+input.__AC_validating, div.__AC_validating {
    background-color: #F7ECCF !important;
    color:            #D95E28 !important;
    background-image: url(validating.gif);
