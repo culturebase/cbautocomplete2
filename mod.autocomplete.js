@@ -150,7 +150,7 @@ jQuery.fn.autoComplete = function(params) {
        * The original value
        */
       var originalVal = jQuery(element).val();
-      
+
       /**
        * Display the validated state
        */
@@ -215,7 +215,7 @@ jQuery.fn.autoComplete = function(params) {
             options['customCallbackFinal']();
          }
       };
-      
+
       /**
        * Show box
        */
@@ -360,11 +360,7 @@ jQuery.fn.autoComplete = function(params) {
                            "cursor": "pointer"
                         }));
                      }
-                     box.css({
-                        'left':   element.offsetLeft + 'px',
-                        'top':   element.offsetTop + jQuery(element).outerHeight() + 'px',
-                        'width': jQuery(element).outerWidth() + 'px'
-                     });
+                     box.css('width', jQuery(element).outerWidth() + 'px')
                      jQuery(element).parent().append(box);
                      editing();
                   }
@@ -435,7 +431,7 @@ jQuery.fn.autoComplete = function(params) {
          }
       });
 
-      
+
       /**
        * Key enter, has to be done on keypress so that it happens before any submit events
        */
