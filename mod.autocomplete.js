@@ -80,7 +80,11 @@ jQuery.fn.autoComplete = function(params) {
       /**
        * Trap "enter" keypress to avoid submitting forms?
        */
-      'trapEnter': false
+      'trapEnter': false,
+      /**
+       * Provide a callback for showbox
+       */
+      'onShow' : false
    };
 
    /*
@@ -363,6 +367,9 @@ jQuery.fn.autoComplete = function(params) {
                      box.css('width', jQuery(element).outerWidth() + 'px')
                      jQuery(element).parent().append(box);
                      editing();
+                     if (options['onShow'] && typeof options['onShow'] === 'function') {
+                        options['onShow']();
+                     }
                   }
                }
             );
