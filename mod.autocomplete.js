@@ -255,42 +255,26 @@ jQuery.fn.autoComplete = function(params) {
                      if (JSONdata['results'] != undefined) {
                         var position = box.find('.__AC_data');
                         for (var record in JSONdata['results']) {
-                           if (typeof(JSONdata['results'][record]['customCallback']) != 'undefined') {
-                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                 .appendTo(position).click(JSONdata['results'][record]['customCallback']).hover(function() {
-                                    jQuery(this).addClass('__AC_ie8HoverFix');
-                                    hoverEntry = true;
-                                    jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
-                                    isFreetext = false;
-                                 }, function() {
-                                    jQuery(this).removeClass('__AC_ie8HoverFix');
-                                    hoverEntry = false;
-                                 }
-                              );
+                           var callback = selectEntry;
+                           if (typeof(JSONdata['results'][record]['customCallback']) !== 'undefined') {
+                              callback = JSONdata['results'][record]['customCallback'];
                            } else if (options['customCallback']) {
-                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                 .appendTo(position).click(options['customCallback']).hover(function() {
-                                    jQuery(this).addClass('__AC_ie8HoverFix');
-                                    hoverEntry = true;
-                                    jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
-                                    isFreetext = false;
-                                 }, function() {
-                                    jQuery(this).removeClass('__AC_ie8HoverFix');
-                                    hoverEntry = false;
-                                 }
-                              );
-                           } else {
-                              jQuery('<div class="__AC_record" title="' + JSONdata['results'][record]['value'] + '" id="' + JSONdata['results'][record]['id'] + '">' + JSONdata['results'][record]['info'] + '</div>')
-                                 .appendTo(position).click(selectEntry).hover(function() {
-                                    jQuery(this).addClass('__AC_ie8HoverFix');
-                                    jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
-                                    hoverEntry = true;
-                                 }, function() {
-                                    jQuery(this).removeClass('__AC_ie8HoverFix');
-                                    hoverEntry = false;
-                                 }
-                              );
+                              callback = options['customCallback'];
                            }
+
+                           jQuery('<div class="__AC_record" title="' +
+                                    JSONdata['results'][record]['value'] + '" id="' +
+                                    JSONdata['results'][record]['id'] + '">' +
+                                    JSONdata['results'][record]['info'] + '</div>')
+                                 .appendTo(position).click(callback).hover(function() {
+                              jQuery(this).addClass('__AC_ie8HoverFix');
+                              hoverEntry = true;
+                              jQuery('.__AC_keyhover').removeClass('__AC_keyhover');
+                              isFreetext = false;
+                           }, function() {
+                              jQuery(this).removeClass('__AC_ie8HoverFix');
+                              hoverEntry = false;
+                           });
                         }
                      }
 
@@ -444,7 +428,8 @@ jQuery.fn.autoComplete = function(params) {
        */
       jQuery(element).keypress(function(keyCapture) {
          if (keyCapture.which == '13') {
-            selectEntry.call(jQuery('.__AC_keyhover'));
+            // simulate click to trigger correct callback (possibly from JSONdata)
+            jQuery('.__AC_keyhover').click();
             return !options.trapEnter;
          }
          return true;
