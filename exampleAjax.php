@@ -11,11 +11,11 @@ $query = "
      FROM `cb3`.`tcity`
 LEFT JOIN `tcountry`
        ON `tcountry`.`id` = `tcity`.`country_id`
-    WHERE `tcity`.`comment` LIKE '".$_GET['actualInput']."%'
+    WHERE `tcity`.`comment` LIKE '%s%%'
 ";
 
 $return = array();
-$daten = $handler->query($query);
+$daten = $handler->query($query, $_GET['actualInput']);
 foreach ($daten as $data) {
    $return[] = '{ id: "'.$data['id'].'", value: "'.trim($data['comment']).'", info: "'.trim($data['comment']).' ['.trim($data['country']).']" }';
 }
